@@ -1,0 +1,90 @@
+name: Generate Images JSON Automatically
+
+on:
+  push:
+    paths:
+      - 'images/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate data.json
+        run: |
+          python3 << 'EOF'
+          import os, json
+
+          images = []
+          for file in os.listdir("images"):
+              if file.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+                  images.append("images/" + file)
+
+          data = {
+              "images": sorted(images),
+              "adjectives": [
+                  "beautiful",
+                  "kind",
+                  "amazing",
+                  "wonderful",
+                  "darling",
+                  "magnificent",
+                  "hilarious",
+                  "superb",
+                  "lovable",
+                  "lovely",
+                  "pretty",
+                  "cute",
+                  "funny",
+                  "brave",
+                  "strong",
+                  "caring",
+                  "loyal",
+                  "tubular",
+                  "radical",
+                  "sexy",
+                  "gorgeous",
+                  "hot",
+                  "epic",
+                  "daring",
+                  "flexible",
+                  "perseverant",
+                  "fun",
+                  "nice",
+                  "sweet",
+                  "delightful",
+                  "charming",
+                  "charismatic",
+                  "cozy",
+                  "cool",
+                  "considerate",
+                  "independent",
+                  "affectionate",
+                  "adaptable",
+                  "generous",
+                  "diligent",
+                  "fantastic",
+                  "intelligent",
+                  "smart",
+                  "artistic",
+                  "witty",
+                  "trustworthy",
+                  "gentle",
+                  "perfect"
+              ]
+          }
+
+          with open("data.json", "w") as f:
+              json.dump(data, f, indent=2)
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data.json
+          git commit -m "auto-update image list" || exit 0
+          git push
