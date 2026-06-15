@@ -8,8 +8,15 @@ async function loadData() {
     const adjective =
         data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
 
-    document.getElementById("maya-image").src = image;
-    document.getElementById("adjective").textContent = adjective;
+    const img = new Image();
+    img.src = image;
+
+    img.onload = () => {
+        document.getElementById("maya-image").src = image;
+        document.getElementById("adjective").textContent = adjective;
+
+        document.getElementById("page").classList.add("show");
+    };
 }
 
 loadData();
