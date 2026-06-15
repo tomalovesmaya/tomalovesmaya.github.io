@@ -1,3 +1,11 @@
+#page {
+    opacity: 0;
+}
+
+#page.show {
+    animation: fadeIn 1s ease forwards;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Give+You+Glory&display=swap');
 
 body {
