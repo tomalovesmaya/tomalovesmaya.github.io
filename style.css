@@ -26,8 +26,11 @@ body {
 }
 
 img {
-    max-width: min(90vw, 600px);
+    width: min(75vw, 600px);
+    height: min(75vw, 600px);
     max-height: 70vh;
+
+    object-fit: contain;
 
     background: white;
     padding: 12px;
