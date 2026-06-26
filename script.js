@@ -10,6 +10,22 @@ async function loadData() {
 
     img.onload = () => {
         const imageEl = document.getElementById("maya-image");
+        const photoEl = document.getElementById("photo");
+
+        photoEl.querySelectorAll(".stack").forEach(e => e.remove());
+
+        const stackCount = Math.floor(Math.random() * 3) + 2;
+
+        for (let i = 0; i < stackCount; i++) {
+            const stack = document.createElement("div");
+            stack.className = "stack";
+            stack.style.zIndex = i;
+            stack.style.transform =
+                `translate(${(Math.random() - 0.5) * 14}px, ${(Math.random() - 0.5) * 14}px) rotate(${(Math.random() - 0.5) * 10}deg)`;
+            stack.style.boxShadow =
+                `0 ${6 + Math.random() * 8}px ${16 + Math.random() * 12}px rgba(0,0,0,${0.05 + Math.random() * 0.05})`;
+            photoEl.insertBefore(stack, imageEl);
+        }
 
         if (img.naturalHeight > img.naturalWidth) {
             imageEl.style.padding = "16px 56px 16px 16px";
@@ -29,7 +45,21 @@ async function loadData() {
             rotation += (Math.random() < 0.5 ? -2 : 2);
         }
 
-        imageEl.style.transform = `rotate(${rotation}deg)`;
+        const x = (Math.random() - 0.5) * 16;
+        const y = (Math.random() - 0.5) * 16;
+
+        imageEl.style.transform =
+            `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
+
+        const blur = 20 + Math.random() * 12;
+        const spread = 8 + Math.random() * 6;
+        const opacity = 0.14 + Math.random() * 0.08;
+
+        imageEl.style.setProperty(
+            "--shadow",
+            `0 2px 6px rgba(0,0,0,.12), 0 ${spread}px ${blur}px rgba(0,0,0,${opacity})`
+        );
+
         imageEl.src = image;
 
         const textEl = document.getElementById("text");
