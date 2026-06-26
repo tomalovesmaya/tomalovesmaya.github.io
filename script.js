@@ -25,7 +25,7 @@ async function loadData() {
         const textEl = document.getElementById("text");
     
         if (Math.random() < 0.002132026) {
-            textEl.textContent = "yeah I prolly would";
+            textEl.textContent = "yeah i prolly would";
         } else {
             const adjective =
                 data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
