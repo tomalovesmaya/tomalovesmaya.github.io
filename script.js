@@ -14,7 +14,7 @@ async function loadData() {
 
         photoEl.querySelectorAll(".stack").forEach(e => e.remove());
 
-        const stackCount = Math.floor(Math.random() * 3) + 2;
+        const stackCount = Math.floor(Math.random() * 3) + 1;
 
         for (let i = 0; i < stackCount; i++) {
             const stack = document.createElement("div");
