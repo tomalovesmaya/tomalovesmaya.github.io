@@ -1,29 +1,27 @@
-async function loadData() {
-    const response = await fetch("data.json");
-    const data = await response.json();
+img.onload = () => {
+    const imageEl = document.getElementById("maya-image");
+    imageEl.src = image;
 
-    const image =
-        data.images[Math.floor(Math.random() * data.images.length)];
+    let rotation;
 
-    const img = new Image();
-    img.src = image;
+    if (Math.random() < 0.06262026) {
+        rotation = (Math.random() < 0.5 ? -1 : 1) * (5 + Math.random() * 3);
+    } else {
+        rotation = (Math.random() < 0.5 ? -1 : 1) * (0.5 + Math.random() * 2.5);
+    }
 
-    img.onload = () => {
-        document.getElementById("maya-image").src = image;
+    imageEl.style.transform = `rotate(${rotation}deg)`;
 
-        const textEl = document.getElementById("text");
+    const textEl = document.getElementById("text");
 
-        if (Math.random() < 0.002132026) {
-            textEl.textContent = "yeah I prolly would";
-        } else {
-            const adjective =
-                data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
+    if (Math.random() < 0.002132026) {
+        textEl.textContent = "yeah I prolly would";
+    } else {
+        const adjective =
+            data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
 
-            textEl.innerHTML = `<strong>Maya</strong> is <em>${adjective}</em>`;
-        }
+        textEl.innerHTML = `<strong>Maya</strong> is <em>${adjective}</em>`;
+    }
 
-        document.getElementById("page").classList.add("show");
-    };
-}
-
-loadData();
+    document.getElementById("page").classList.add("show");
+};
