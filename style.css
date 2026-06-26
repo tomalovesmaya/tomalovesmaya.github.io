@@ -42,6 +42,15 @@ body {
     animation: fadeIn 1s ease forwards;
 }
 
+@keyframes stackFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 img {
     position: relative;
     z-index: 10;
