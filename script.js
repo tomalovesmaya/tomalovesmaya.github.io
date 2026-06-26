@@ -13,7 +13,7 @@ async function loadData() {
 
         const textEl = document.getElementById("text");
 
-        if (Math.random() < 0.01) {
+        if (Math.random() < 0.002132026) {
             textEl.textContent = "yeah I prolly would";
         } else {
             const adjective =
