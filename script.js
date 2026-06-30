@@ -79,7 +79,7 @@ async function loadData() {
         heartEl.style.textDecoration = "none";
         heartEl.style.cursor = "default";
         
-        if (Math.random() < 0.013126) {
+        if (Math.random() < 0.92) {
             heartEl.innerHTML =
                 '<a href="https://entrance.tomalovesmaya.com" style="color:inherit;text-decoration:underline;">♡</a>';
             heartEl.style.cursor = "pointer";
