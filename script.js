@@ -78,7 +78,7 @@ async function loadData() {
         heartEl.innerHTML = "♡";
         heartEl.style.textDecoration = "none";
         heartEl.style.cursor = "default";
-        
+
         if (Math.random() < 0.013126) {
             heartEl.innerHTML =
                 '<a href="https://entrance.tomalovesmaya.com" style="color:inherit;text-decoration:underline;">♡</a>';
@@ -86,7 +86,52 @@ async function loadData() {
         }
 
         document.getElementById("page").classList.add("show");
+
+        startCountdown();
     };
+}
+
+function startCountdown() {
+    const countdownEl = document.getElementById("countdown");
+
+    if (!countdownEl) return;
+
+    const firstTarget = new Date("2026-08-05T00:00:00-07:00");
+    const secondTarget = new Date("2027-02-13T00:00:00-08:00");
+
+    function updateCountdown() {
+        const now = new Date();
+
+        let target;
+
+        if (now < firstTarget) {
+            target = firstTarget;
+        } else if (now < secondTarget) {
+            target = secondTarget;
+        } else {
+            countdownEl.textContent = "";
+            return;
+        }
+
+        let diff = target - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        diff %= 1000 * 60 * 60 * 24;
+
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        diff %= 1000 * 60 * 60;
+
+        const minutes = Math.floor(diff / (1000 * 60));
+        diff %= 1000 * 60;
+
+        const seconds = Math.floor(diff / 1000);
+
+        countdownEl.textContent =
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 }
 
 loadData();
