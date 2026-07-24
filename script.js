@@ -96,7 +96,7 @@ function startCountdown() {
 
     if (!countdownEl) return;
 
-    const firstTarget = new Date("2026-08-05T00:00:00-07:00");
+    const firstTarget = new Date("2026-07-31T12:00:00-07:00");
     const secondTarget = new Date("2027-02-13T00:00:00-08:00");
 
     function updateCountdown() {
