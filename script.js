@@ -70,7 +70,7 @@ async function loadData() {
             const adjective =
                 data.adjectives[Math.floor(Math.random() * data.adjectives.length)];
 
-//            textEl.innerHTML = `<strong>Maya</strong> is <em>${adjective}</em>`;
+            textEl.innerHTML = `<strong>Maya</strong> is <em>${adjective}</em>`;
         }
 
         const heartEl = document.getElementById("heart");
